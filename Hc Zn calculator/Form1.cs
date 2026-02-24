@@ -27,7 +27,7 @@ namespace Hc_Zn_calculator
 {
     public partial class Form1 : Form
     {
-        public static bool flag = true;
+        public static bool flag = false;
 
         public Form1()
         {
