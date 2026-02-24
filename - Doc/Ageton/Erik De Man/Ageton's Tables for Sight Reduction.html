@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0039)http://www.siranah.de/html/sail040u.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Ageton's Tables for Sight Reduction</title>
+  <script language="JavaScript" src="./Ageton's Tables for Sight Reduction_files/checkfr.js" type="text/javascript"></script>
+  <script>
+  // ---------------------------------------------------------------------------
+  function MakeAgetonTable()
+  { var dfwin=window.open("","","scrollbars=yes,resizable=yes");
+
+    dfwin.document.open('text/html');
+    dfwin.document.writeln('<html>');
+    dfwin.document.writeln('<head><title>Ageton Tables</title></head>');
+    dfwin.document.writeln('<FRAMESET rows="*,100" border="0">');
+    dfwin.document.writeln('  <FRAME name="Dwin" src="waitpage.htm">');
+    dfwin.document.writeln('  <FRAME name="Cwin" src="auto040u.htm">');
+    dfwin.document.writeln('</FRAMESET>');
+    dfwin.document.writeln('</html>');
+    dfwin.document.close();
+
+    return;
+  }
+  </script>
+</head>
+
+<body text="#000066" bgcolor="#FFFFFF" link="#0000FF" vlink="#0000FF" onload="CheckFrame(&#39;fr_sail.htm&#39;,40,22)">
+<table border="0" cellpadding="0" cellspacing="0" width="680"><tbody><tr><td>
+<h2>Ageton's Tables for Sight Reduction</h2>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td valign="top">
+<p align="justify">
+Sight Reduction is the process of solving the Navigational Triangle
+for an Assumed Position and the position of an observed Celestial Body 
+in order to obtain a Line-of-Position.
+In the beginning of the 20th century Arthur A. Ageton developed a method
+of solving the oblique navigational triangle by dividing it into two 
+right-angled triangles, which can be solved with less complex 
+trigonometric operations.<br>
+ <br>
+The oblique navigational triangle between the Geographical Point (GP)
+of the observed celestial body, the Geographical North Pole (NP) and the
+Assumed Position (AP) of the observer is divided into two right-angled
+triangles by a great-circle segment "R" starting at GP and intersecting 
+the Meridian through AP at a right angle.
+This defines a new triangle side "R" and a new triangle vertex point "Q". 
+This point has the same Longitude as the Assumed Position and
+a Latitude "LatQ".
+Notice, that except if GP is on the Equator, the Latitude of "Q" is 
+different from the Latitude of GP.<br>
+ <br>
+By solving the two the right-angled triangles, the values for the 
+Altitude (Hc) and Azimuth (Zc) can be obtained with less complex 
+trigonometric calculations at the price of a larger number of operations.
+The main advantage of this method is that the only two simple trigonometric
+functions are required, which can be tabulated in a much denser
+form compared to the tables needed for solving the oblique
+navigational triangle directly (as e.g. in the "H.O. 229" Tables).</p>
+</td>
+<td width="230" align="right" valign="top">
+  <img src="./Ageton's Tables for Sight Reduction_files/sail040u_A.png" width="210" height="320" alt="sail040u_A.png">
+</td></tr>
+</tbody></table>
+ <br>
+ <br>
+<hr>
+<h3>Solving the divided Navigational Triangle</h3>
+<p align="justify">
+For the sight-reduction problem, the Navigational Triangle has be 
+solved to obtain the calculated values for Altitude (Hc) and Azimuth (Zc)
+for an Assumed Position with coordinates: assumed Latitude (LatAP)
+and assumed Longitude (LonAP) and the celestial coordinates of 
+the observed body: Declination (Dec) and Greenwich Hour Angle (GHA).<br>
+The Method of Ageton includes two additional - intermediate - 
+values: the Latitude of the vertex "Q" (LatQ) and the length of the 
+intermediate side "R" (see picture at the top of this section).<br>
+ <br>
+Altitude (Hc) and Azimuth (Zc) may be obtained through the following 7 steps:</p>
+<pre> 1. LHA  = GHA + LonAP</pre>
+<p align="justify">
+Solve the sides of the first right-angled triangle 
+(Law of Sines and Law of Cosines for Sides):</p>
+<pre> 2. sin(R)    = sin(LHA)*cos(Dec)
+ 3. sin(LatQ) = sin(Dec)/cos(R)</pre>
+<p align="justify">
+Solve the second right-angled triangle for Hc and Zc 
+(Law of Sines and Law of Cosines for Sides):</p>
+<pre> 4. dLat      = LatAP - LatQ
+ 5. sin(Hc)   = cos(R)*cos(dLat)
+ 6. sin(Z)    = sin(R)/cos(Hc)</pre>
+<p align="justify">
+If the North Pole is systematically used as reference pole (even 
+if the elevated pole is the South Pole), the true Azimuth Zc 
+is obtained from Z through the following rule:</p><pre> 7. if LHA &lt; 180°  then  Zc = Z
+    if LHA &gt; 180°  then  Zc = 360° - Z</pre>
+ <br>
+ <br>
+Ageton reformulated the above equations using the <i>Secant</i> 
+<nobr>(sec(x) = 1/cos(x) )</nobr> and <i>Cosecant</i> 
+<nobr>( csc(x) = 1/sin(x) )</nobr> functions.
+Additionally he introduced logarithms to change multiplication
+and division operations into much simpler addition and subtraction
+operations. The steps for solving the
+divided navigational triangle can then be reformulated as:<p></p>
+<pre> 2. csc(R)    = csc(LHA)*sec(Dec)
+ 3. csc(LatQ) = csc(Dec)/sec(R)
+
+ 5. csc(Hc)   = sec(R)*sec(dLat)
+ 6. csc(Z)    = csc(R)/sec(Hc)</pre>
+<p align="justify">
+Introducing the logarithmic functions A(x)=log<sub>10</sub>(csc(x)) 
+and B(x)=log<sub>10</sub>(sec(x)) this becomes:</p>
+<pre> 2. A(R)    = A(LHA) + B(Dec)
+ 3. A(LatQ) = A(Dec) - B(R)
+
+ 5. A(Hc)   = B(R)   + B(LatQ-LatAP)
+ 6. A(Z)    = A(R)   - B(Hc)</pre>
+<p align="justify"> 
+With the values A(x) and B(x) available (e.g. as precompiled tables) a
+sight can be reduced by a series of additions, subtractions and 
+table look-ups.<br>
+ <br>
+<b>Remarks</b>:<br>
+1. Since the Ageton Tables are available only for x in the range 
+[0° &lt; x &lt; 180°], the Meridian Angle (t) must be used instead
+of the Local Hour Angle (LHA) according to:</p><pre> t = -LHA        if LHA &lt; 180°
+ t = 360° - LHA  if LHA &gt; 180°</pre>
+2. Since the logarithmic functions A(x) and B(x) cannot preserve 
+the correct sign of the argument x, the sign of each angle obtained
+by backward table look-up must be derived from the actual geometry 
+of the Navigational Triangle.
+Therefore, it is highly recommended to sketch the spherical triangles
+involved while solving them for the required values.<p></p>
+ <br>
+ <br>
+<hr>
+<h3>Purpose and Scope</h3>
+<p align="justify">
+The Ageton Tables can be used to solve right-angled spherical 
+triangles, as part of the sight-reduction process or other
+navigational problems based on the general navigational triangle.<br>
+ <br>
+The Ageton Tables, first published by the Hydrographic Office as HO211 in 1931, 
+contain the tabulated values of the the <i>Secant</i> 
+<nobr>(sec(x) = 1/cos(x) )</nobr> and <i>Cosecant</i> 
+<nobr>( csc(x) = 1/sin(x) )</nobr> functions in the following form:</p>
+<ul>
+ <li>A(x) = 100 000 * log<sub>10</sub>( 1/sin(x) )</li>
+ <li>B(x) = 100 000 * log<sub>10</sub>( 1/cos(x) ) </li>
+</ul>
+<p align="justify">
+The multiplication factor 100 000 is used to tabulate the 
+functions A(x) and B(x) as integer values thus simplifying the 
+addition and subtraction of these values.
+In the original tables, the functions A(x)/B(x) were recorded with an 
+angle increment of 0.5' for a range [0° &lt; x &lt; 180°].
+Notice that the function A(x) is undefined for x=0° and x=180°,
+whereas the function B(x) is undefined for x=90°.<br>
+The Ageton Method may give unreliable results if one of the angles 
+involved in the Sight Reduction process is close to 0°, 90° or 180°.
+In order to obtain the best possible accuracy, the Ageton Tables 
+should be used with linear interpolation in both directions:
+forward (from x to A(x)/B(x)) and backward (from A(x)/B(x) to x).</p>
+ <br>
+ <br>
+<hr>
+<h3>Tables</h3>
+<h4>Arrangement</h4>
+<p align="justify">
+In the tables available here, each page contains the values of A(x) and B(x) 
+for an interval of one degree with a 0.2' angle increment.
+Since the logarithmic tables do not consider the sign of the 
+<i>Cosecant</i> and <i>Secant</i> functions, each table entry 
+for an angle x can also be used for it's supplementary value
+180°-x. This value is printed in the bottom line of the table.
+The fractional value of the argument is obtained from the
+corresponding column (deca-minutes) and row (minutes).
+As indicated by the table background colour of the interactive tables, 
+use the top/left minute labels for the degree value in the top row 
+and use the bottom/right minute labels for the degree value at the bottom row.</p>
+<h4>Interactive Tables</h4>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td>
+<table border="0" cellpadding="6" cellspacing="2" bgcolor="#CCCCCC">
+<tbody><tr><th valign="top"><a href="JavaScript:MakeAgetonTable()">Table</a></th>
+</tr><tr>
+  <td><a href="JavaScript:MakeAgetonTable()" onmouseover="self.document.images[1].src=&quot;../pictures/sail000a_Y.gif&quot;" onmouseout="self.document.images[1].src=&quot;../pictures/sail000a_X.gif&quot;">
+      <img src="./Ageton's Tables for Sight Reduction_files/sail000a_X.gif" border="0"></a></td>
+</tr>
+</tbody></table></td>
+<td width="20"> &nbsp; </td>
+<td valign="top"><p align="justify">
+With the links on the left, a specific page of the Ageton Tables can 
+be generated. The pages are "numbered" from 0° to 89°.
+This number can be entered in the "Angle" field to generate the 
+corresponding page of the Tables.<br>
+In order to obtain reliable results, the B(x) values should not 
+be used for angles lower than 3° whereas the A(x) values should 
+not be used for angles higher than 87°.</p></td></tr>
+</tbody></table>
+ <br>
+<h4>Precompiled Tables</h4>
+<div align="justify"><img src="./Ageton's Tables for Sight Reduction_files/sail000a_Z.gif" align="right" hspace="20">
+The complete Ageton Tables are also available as <a href="http://www.siranah.de/manuals/AgetonTables.pdf">
+compiled tables</a> in PDF format. 
+The same tables are also available in a <a href="http://www.siranah.de/manuals/AgetonTables_book-ds.pdf">
+booklet format</a>. In order to obtain the booklet, print this file double-sided, then
+fold each page and glue the folded edges of all pages together.
+In the tables, some ranges for A(x) and B(x) have been shaded grey. 
+To obtain reliable results, these ranges should not be used in the
+calculation process for sight reduction.<br> <br>
+PDF files can be viewed and printed with free available tools such as
+Evince, Xpdf or Acrobat Reader.</div>
+ <br>
+<h4>Note on accuracy</h4>
+<p align="justify">
+An extensive error analysis was performed with the following 
+conditions:</p>
+<ul>
+ <li>parameter ranges:<br>
+- [-90° &lt; t &lt; +90°]<br>
+- [-70° &lt; Latitude (LatAP)  &lt; +70° ]<br>
+- [-30° &lt; Declination (Dec)  &lt; +30° ]</li>
+ <li>parameter combinations yielding an Altitude of less than 6° are discarded</li>
+ <li>sights for which the the grey shaded regions of the tables 
+have to be used are discarded (this is the case for about 8% of
+the valid combinations with an Altitude above 6°).</li>
+</ul>
+<p align="justify">
+For all parameter combinations in the above mentioned ranges
+(with a resolution of 0.05°) the results of the sight reduction
+obtained with the table-based Ageton method were compared to the 
+results obtained by solving directly the trigonometric equations 
+of the navigational triangle.
+This comparison results in the following statistics on the evaluated 
+error for the Altitude "Hc":</p>
+<ul>
+ <li>the maximum error is ±2.1' (minutes of arc)</li>
+ <li>the mean error over all valid combinations is 0.1'</li>
+ <li>90.0% of the valid combinations have an absolute error lower than 0.2'</li>
+ <li>99.0% of the valid combinations have an absolute error lower than 0.5'</li>
+ <li>99.9% of the valid combinations have an absolute error lower than 0.8'</li>
+ <li>0.0004% of the valid combinations have an absolute error larger than 1.0'</li>
+</ul>
+<p align="justify">
+The Sight Reductions performed with the tables were done
+using simple linear interpolation on the recorded table values.
+The accuracy can be increased by using a higher multiplication
+factor (e.g. if a factor 1000000 is used instead of 100000, the
+maximum error is ±1.2')<br>
+The maximum error on the calculated Azimuth "Zc" for the investigated
+parameter space is lower than 20' (0.3°), which is accurate
+enough to obtain a reliable Azimuth Line at the Assumed Position.</p>
+ <br>
+ <br>
+<hr>
+<h3>Calculation Scheme</h3>
+<p align="justify">
+The following scheme can be applied for sight reduction using the 
+above presented Tables. 
+Close attention should be paid to the remarks and instructions at 
+the lower part of the form!<br>
+ <br>
+</p>
+<table align="center" border="1" cellspacing="0" cellpadding="4">
+<tbody><tr><td>
+<pre>                                                                              <font color="#339933">Remarks</font>     
+     <b>AP</b>:  LatAP  =  ±__°__'_ (N/S)           <b>GP</b>:    Dec =  ±__°__'_ (N/S)       <font color="#339933">(0)</font>
+          LonAP  = ±___°__'_ (E/W)                  GHA =  ___°__'_ 
+
+
+     1.   LHA    = GHA + LonAP   =  ___°__'_
+            t    =     - LHA     = ±___°__'_         if( LHA &lt; 180°)            <font color="#339933">(1)</font>
+            t    = 360°- LHA     = ±___°__'_         if( LHA &gt; 180°)
+          A(t)   = ________
+
+     2.   A(Dec) = ________                      B(Dec) = ________
+
+     3.   A(R)   = A(t) + B(Dec) = ________ + ________  = ________
+            R    =  __°__'_                        B(R) = ________
+
+     4.   A(LatQ)= A(Dec) - B(R) = ________ - ________  = ________
+            LatQ = ±__°__'_ (N/S)                                              <font color="#339933">(4)</font>
+
+     5.     dLat = LatAP - LatQ  = ±__°__'_ <b>-</b> ±__°__'_  = ±___°__'_            <font color="#339933">(5)</font>
+          B(dLat)= ________
+
+     6.    A(Hc) = B(R) + B(dLat) = ________ + ________  = ________
+             Hc  =  __°__'_                        B(Hc) = ________
+
+     7.    A(Z)  = A(R) - B(Hc)   = ________ - ________  = ________
+             Z   =  __°__'_                                                    <font color="#339933">(7)</font>
+
+     8.      Zc  = ___°__'_                                                    <font color="#339933">(8)</font>           
+
+
+
+<font color="#339933">  Remarks and Instructions
+  (0)  Use the appropriate signs for Latitude, Longitude and Declination: 
+       positive for N and E, negative for S and W. 
+ 
+  (1)  The meridian angle "t" is calculated from "LHA" according to the following rule:
+       if LHA &lt; 180°   t =      - LHA      
+       if LHA &gt; 180°   t = 360° - LHA     
+ 
+  (4)  The sign of the Latitude of "Q" (N/S) depends on the values of "t" and "Dec": 
+       if |t| &lt; 90°   LatQ has the     same sign as <b>Dec</b>
+       if |t| &gt; 90°   LatQ has the contrary sign of <b>Dec</b>
+       Where |t| is the absolute value of "t"
+
+  (5)  The value of "dLat" must be calculated taking the correct signs for "LatAP" and
+       "LatQ" into account. The resulting sign of "dLat" should be recorded correcly
+       (see remark 7).
+
+  (7)  Select one out of four cases, depending on the value of "|t|" and the sign of 
+       "dLat" to determine how to select the value of "Z" from the Tables:
+         |t|     |       |t| &lt; 90°       |       |t| &gt; 90°       |
+         dLat    |      <b>-</b>    |     <b>+</b>     |     <b>-</b>     |     <b>+</b>     |
+          Z      |   &lt; 90°   |  &gt; 90°    |   &gt; 90°   |   &lt; 90°   |
+       if Z &lt; 90° select Z from the    top line - left  column of the Table
+       if Z &gt; 90° select Z from the bottom line - right column of the Table
+
+  (8)  The true Azimuth "Zc" is obtained from "Z" depending on the sign of "t":
+       if t &gt; 0   Zc = Z            (GP is East of AP)
+       if t &lt; 0   Zc = 360° - Z     (GP is West of AP)
+</font>
+</pre></td></tr></tbody></table> 
+<p align="justify">
+This form is also available as printer friendly pdf file:
+<a href="http://www.siranah.de/manuals/Ws_Ageton.pdf" target="_blank">
+worksheet for Sight Reduction according to Ageton</a>.</p>
+ <br>
+ <br>
+<hr>
+<h3>Examples</h3>
+<p align="justify">
+In the following section, some examples of Sight Reduction
+using the Ageton Tables are elaborated.
+The examples cover most combinations of Assumed Position (N/S),
+Declination (N/S) of the celestial body and possible Meridian Angles.
+</p>
+<h4>Example 1</h4>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr><td width="220" align="left" valign="top">
+  <img src="./Ageton's Tables for Sight Reduction_files/sail040u_B.png" width="210" height="320" alt="sail040u_B.png">
+  </td><td> &nbsp; </td>
+  <td><pre><b>AP</b>: LatAP= -20° 00'0 (S)         <b>GP</b>: Dec= +15° 00'0 (N)
+    LonAP= +15° 00'0 (E)             GHA= 045° 00'0 (W)
+
+
+ 1. t = GHA+LonAP = 60° 00.0'          A(t)=  6247
+
+ 2. A(R)   = A(t) + B(Dec) =  6247 +  1506 =  7753  
+      R    =  56° 46'4                 B(R)= 26126
+
+ 3. A(LatQ)= A(Dec) - B(R) = 58700 - 26126 = 32574
+      LatQ = +28° 11'3       (sign determined from topology)
+
+    dLat   = LatQ-LatAP = 48° 11'3  B(dlat)= 26126
+
+ 4. A(Hc)  = B(R) + B(dLat)= 26126 + 17609 = 43735
+      <b>Hc   =  21° 25'6</b>               B(Hc) =  3111
+
+ 5. A(Z)   = A(R) - B(Hc)  =  7753 -  3111 =  4642
+      Z    =  63° 58'6       (value selected from topology)              
+      <b>Zc   = 296° 01'4</b>       (rule determined from topology)
+
+</pre></td></tr>
+<tr><td colspan="3">
+<p align="justify">
+The same values are obtained when solving the oblique triangle 
+directly with an electronic calculator: 
+<nobr>Hc = 21° 25'6</nobr> and <nobr>Zc = 296° 01'4.</nobr></p>
+</td></tr>
+</tbody></table>
+ <br>
+<h4>Example 2</h4>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr><td width="220" align="left" valign="top">
+  <img src="./Ageton's Tables for Sight Reduction_files/sail040u_C.png" width="210" height="320" alt="sail040u_C.png"></td><td> &nbsp; </td>
+  <td><pre><b>AP</b>: LatAP= -30° 00'0 (S)         <b>GP</b>: Dec= -10° 00'0 (S)
+    LonAP= +15° 00'0 (E)             GHA= 045° 00'0 (W)
+
+
+ 1. t = GHA+LonAP = 60° 00.0'          A(t)=  6247
+
+ 2. A(R)   = A(t) + B(Dec) =  6247 +   665 =  6912  
+      R    =  58° 31'5                 B(R)= 28222
+
+ 3. A(LatQ)= A(Dec) - B(R) = 76033 - 28222 = 47811
+      LatQ = -19° 25'5       (sign determined from topology)
+
+    dLat   = LatQ-LatAP = 10° 34'5  B(dlat)=   744
+
+ 4. A(Hc)  = B(R) + B(dLat)= 28222 +   744 = 28966
+      <b>Hc   =  30° 52'9</b>               B(Hc) =  6639
+
+ 5. A(Z)   = A(R) - B(Hc)  =  6912 -  6639 =   273
+      Z    =  83° 35'0       (value selected from topology)  
+      <b>Zc   = 276° 25'0</b>       (rule determined from topology)
+
+</pre></td></tr>
+<tr><td colspan="3">
+<p align="justify">
+Slightly different values are obtained when solving the oblique triangle 
+directly with an electronic calculator: 
+<nobr>Hc = 30° 52'8</nobr> and <nobr>Zc = 276° 24'6.</nobr></p>
+</td></tr>
+</tbody></table>
+ <br>
+<h4>Example 3</h4>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr><td width="220" align="left" valign="top">
+  <img src="./Ageton's Tables for Sight Reduction_files/sail040u_D.png" width="210" height="320" alt="sail040u_D.png"></td><td> &nbsp; </td>
+  <td><pre><b>AP</b>: LatAP= +30° 00'0 (N)         <b>GP</b>: Dec= -10° 00'0 (S)
+    LonAP= +15° 00'0 (E)             GHA= 045° 00'0 (W)
+
+
+ 1. t = GHA+LonAP = 60° 00.0'          A(t)=  6247
+
+ 2. A(R)   = A(t) + B(Dec) =  6247 +   665 =  6912  
+      R    =  58° 31'5                 B(R)= 28222
+
+ 3. A(LatQ)= A(Dec) - B(R) = 76033 - 28222 = 47811
+      LatQ = -19° 25'5       (sign determined from topology)
+
+    dLat   = LatAP-LatQ = 49° 25'5  B(dlat)= 18679
+
+ 4. A(Hc)  = B(R) + B(dLat)= 28222 + 18679 = 46901
+      <b>Hc   =  19° 51'2</b>               B(Hc) =  2661
+
+ 5. A(Z)   = A(R) - B(Hc)  =  6912 -  2661 =  4251
+      Z    = 114° 56'4       (value selected from topology)  
+      <b>Zc   = 245° 03'6</b>       (rule determined from topology)
+
+</pre></td></tr>
+<tr><td colspan="3">
+<p align="justify">
+Slightly different values are obtained when solving the oblique triangle 
+directly with an electronic calculator: 
+<nobr>Hc = 19° 51'1</nobr> and <nobr>Zc = 245° 03'6.</nobr></p>
+</td></tr>
+</tbody></table>
+ <br>
+<h4>Example 4</h4>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tbody><tr><td width="220" align="left" valign="top">
+  <img src="./Ageton's Tables for Sight Reduction_files/sail040u_E.png" width="210" height="320" alt="sail040u_E.png"></td><td> &nbsp; </td>
+  <td><pre><b>AP</b>: LatAP= +45° 00'0 (N)         <b>GP</b>: Dec= +10° 00'0 (N)
+    LonAP= -45° 00'0 (W)             GHA= 330° 00'0 (E)
+
+
+ 1. t = GHA+LonAP = 75° 00.0'          A(t)=  1506
+
+ 2. A(R)   = A(t) + B(Dec) =  1506 +   665 =  2171  
+      R    =  72° 02'0                 B(R)= 51080
+
+ 3. A(LatQ)= A(Dec) - B(R) = 76033 - 51080 = 24953
+      LatQ = +34° 15'6       (sign determined from topology)
+
+    dLat   = LatAP-LatQ = 10° 44'4  B(dlat)=   768
+
+ 4. A(Hc)  = B(R) + B(dLat)= 51080 +   768 = 51848
+      <b>Hc   =  17° 38'5</b>               B(Hc) =  2092
+
+ 5. A(Z)   = A(R) - B(Hc)  =  2171 -  2092 =    79
+      Z    =  93° 27'3       (value selected from topology)  
+      <b>Zc   =  93° 27'3</b>       (rule determined from topology)
+
+</pre></td></tr>
+<tr><td colspan="3">
+<p align="justify">
+Slightly different values are obtained when solving the oblique triangle 
+directly with an electronic calculator: 
+<nobr>Hc = 17° 38'3</nobr> and <nobr>Zc = 093° 27'3.</nobr></p>
+</td></tr></tbody></table>
+
+</td></tr></tbody></table>
+ <br>
+ <br>
+<hr>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody><tr>
+  <td align="left"> <a href="http://www.siranah.de/index.htm" target="_top">Cover</a> &nbsp;&lt;&lt;&nbsp; 
+                  <a href="http://www.siranah.de/html/sail000a.htm">Sail Away</a> &nbsp;&lt;&lt;&nbsp; 
+                  <a href="http://www.siranah.de/html/sail040a.htm">Celestial Navigation</a> &nbsp;&lt;&lt;&nbsp; .</td>
+  <td align="right"><font size="-1">last updated: 30-Nov-2008</font></td>
+</tr>
+</tbody></table>
+
+
+</body></html>

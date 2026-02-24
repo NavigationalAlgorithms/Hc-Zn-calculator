@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Description>Hc Zn calculator
+Navigational Algorithms
+https://sites.google.com/site/navigationalalgorithms/</Description>
+    <Copyright>Copyright ©Navigational Algorithms 2015</Copyright>
+    <PackageProjectUrl>https://sites.google.com/site/navigationalalgorithms/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Navigational Algorithms\Ageton.cs" Link="Navigational Algorithms\Ageton.cs" />
+    <Compile Include="..\Navigational Algorithms\Hc Zn.cs" Link="Navigational Algorithms\Hc Zn.cs" />
+    <Compile Include="..\Navigational Algorithms\Sexagesimal.cs" Link="Navigational Algorithms\Sexagesimal.cs" />
+    <Compile Include="..\Navigational Algorithms\Ultra Compact Haversine Sight Reduction.cs" Link="Navigational Algorithms\Ultra Compact Haversine Sight Reduction.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Navigational Algorithms\" />
+  </ItemGroup>
+
+</Project>
