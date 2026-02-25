@@ -21,6 +21,7 @@
 using System;
 using System.Windows.Forms;
 using NavigationalAlgorithms;
+using static NavigationalAlgorithms.Sexagesimal;
 
 
 namespace Hc_Zn_calculator
@@ -32,14 +33,11 @@ namespace Hc_Zn_calculator
         public Form1()
         {
             InitializeComponent();
-
-            if (flag)
-            {
-                Table_hv_button.Visible = true;
-            }
+            
+            Table_hv_button.Visible = true;
         }
 
-        private void calculate_button_Click(object sender, EventArgs e)
+        private void Calculate_button_Click(object sender, EventArgs e)
         {
             // data
             double B = Convert.ToDouble(B_textBox.Text);
@@ -52,25 +50,30 @@ namespace Hc_Zn_calculator
             double HC  = HcZn.Hc(B, Dec, LHA);
             double ZN  = HcZn.Zn(B, Dec, HC, LHA);
 
-            double Z = HcZn.Z(Dec, LHA, HC);
-            double P = HcZn.LHA2MeridianAngle(LHA);
-
-            // results
-            output_textBox.Text = "Sight reduction:\r\n";
-            output_textBox.Text += "LHA = " + LHA + " º\r\n";
-            output_textBox.Text += "Hc  = " + HC + " º\r\n";
+            output_textBox.Text  = "B = " + B + " = " + DMSformat.DMmHemisferio(B, true) + "\r\n";
+            output_textBox.Text += "L = " + L + " = " + DMSformat.DMmHemisferio(L, false) + "\r\n";
+            output_textBox.Text += "Dec = " + Dec + " = " + DMSformat.DMmHemisferio(Dec, true) + "\r\n";
+            output_textBox.Text += "GHA = " + GHA + " = " + DMSformat.DMm(GHA) + "\r\n";
+            // results            
+            output_textBox.Text += "Sight reduction:\r\n";
+            output_textBox.Text += "LHA = " + LHA + " = " + DMSformat.DMm(LHA) + "\r\n";
+            output_textBox.Text += "Hc  = " + HC + " = " + DMSformat.DMm(HC) + "\r\n";
             // output_textBox.Text += "Zn  = " + string.Format("{0:N2}", ZN) + " º\r\n";
-            output_textBox.Text += "Zn  = " + ZN.ToString("0.0") + " º\r\n";
+            output_textBox.Text += "Zn  = " + ZN.ToString("0.0") + " = " + DMSformat.DMm(ZN) + "\r\n";
+            output_textBox.Text += "\r\n";
 
             if (flag)
             {
+                double Z = HcZn.Z(Dec, LHA, HC);
+                double P = HcZn.LHA2MeridianAngle(LHA);
+
                 output_textBox.Text += "Z   = " + Z.ToString("0.0") + " º\r\n";
                 output_textBox.Text += "t   = " + P + " º\r\n";
                 output_textBox.Text += "Z   = " + HcZn.Zstr(Dec, LHA, HC) + " º\r\n";
 
                 HannoDoniolHaversineMethod();
 
-                // test kk
+                // test TODO
                 /*
                 UltraCompactHaversineSightReduction.LunarDistanceSD(52.0 + 23.0 / 60.0, 38.0 + 40.0 / 60.0, 30.0 + 36.0 / 60.0);
                 UltraCompactHaversineSightReduction.LunarDistanceO(64.0 + 12.9 / 60.0, 38.0 + 38.7 / 60.0, 31.0 + 21.4 / 60.0);
@@ -80,15 +83,15 @@ namespace Hc_Zn_calculator
                 UltraCompactHaversineSightReduction.LunarDistanceO(RBA, 38.0 + 38.7 / 60.0, 31.0 + 21.4 / 60.0);
                 output_textBox.Text += UltraCompactHaversineSightReduction.logStr;*/
 
-                Tuple<double, double> ag = Ageton.HcZn_Ageton(B, L, Dec, GHA);
+                var ag = Ageton.SightReduction(B, L, Dec, GHA);
                 output_textBox.Text += "\r\n";
                 output_textBox.Text += "Ageton SR\r\n";
-                output_textBox.Text += "Hc  = " + ag.Item1 + " º\r\n";
-                output_textBox.Text += "Zn  = " + ag.Item2.ToString("0.0") + " º\r\n";
+                output_textBox.Text += "Hc  = " + ag.Hc + " º\r\n";
+                output_textBox.Text += "Zn  = " + ag.Zn.ToString("0.0") + " º\r\n";
 
                 output_textBox.Text += "\r\n";
                 output_textBox.Text += "Ageton.Examples\r\n";
-                output_textBox.Text += Ageton.Examples();
+                output_textBox.Text += Ageton.Test();
             }
         }
 

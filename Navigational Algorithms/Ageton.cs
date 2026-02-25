@@ -19,6 +19,7 @@
 */
 
 using System;
+using System.Net.NetworkInformation;
 
 
 namespace NavigationalAlgorithms
@@ -66,12 +67,14 @@ namespace NavigationalAlgorithms
 
         #endregion
 
-
-        public static Tuple<double, double> HcZn_Ageton(double lat, double lon, double Dec, double GHA)
+        public static (double Hc, double Zn) SightReduction(double lat, double lon, double Dec, double GHA)
         {
             double LHA = HcZn.LHA(lon, GHA);
             double t = HcZn.LHA2MeridianAngle(LHA);
 
+            //TODO -> testing
+            t = LHA;
+            
             double Ar = A(t) + B(Dec);
             double R = aA(Ar);
             double Ak = A(Dec) - B(R);
@@ -81,33 +84,33 @@ namespace NavigationalAlgorithms
             double Hc = aA(Ahc);
 
             double AZn = Ar - B(Hc);
-            double Zn = aA(AZn); // kk sg(Zn)
+            double Zn = aA(AZn); // TODO sg(Zn)
 
-            return new Tuple<double, double>(Hc, Zn);
+            return new(Hc, Zn);
         }
 
-        public static string Examples()
+        public static string Test()
         {
-            string text = "";
+            string text = "Examples Ageton SR";
+            text += "\r\n";
 
-            Tuple<double, double> ex1 = HcZn_Ageton(-20, 15, 15, 45);
-            text += ex1.Item1.ToString() + "\r\n";
-            text += ex1.Item2.ToString() + "\r\n";
+            var ex1 = SightReduction(-20, 15, 15, 45);
+            text += ex1.Hc.ToString() + " = " + DMSformat.DMm(ex1.Hc) + "\r\n";
+            text += ex1.Zn.ToString() + " = " + DMSformat.DMm(ex1.Zn) + "\r\n";
 
-            Tuple<double, double> ex2 = HcZn_Ageton(-30, 15, -10, 45);
-            text += ex2.Item1.ToString() + "\r\n";
-            text += ex2.Item2.ToString() + "\r\n";
+            var ex2 = SightReduction(-30, 15, -10, 45);
+            text += ex2.Hc.ToString() + " = " + DMSformat.DMm(ex2.Hc) + "\r\n";
+            text += ex2.Zn.ToString() + " = " + DMSformat.DMm(ex2.Zn) + "\r\n";
 
-            Tuple<double, double> ex3 = HcZn_Ageton(30, 15, -10, 45);
-            text += ex3.Item1.ToString() + "\r\n";
-            text += ex3.Item2.ToString() + "\r\n";
+            var ex3 = SightReduction(30, 15, -10, 45);
+            text += ex3.Hc.ToString() + " = " + DMSformat.DMm(ex3.Hc) + "\r\n";
+            text += ex3.Zn.ToString() + " = " + DMSformat.DMm(ex3.Zn) + "\r\n";
 
-            Tuple<double, double> ex4 = HcZn_Ageton(+45, -45, +10, 330);
-            text += ex4.Item1.ToString() + "\r\n";
-            text += ex4.Item2.ToString() + "\r\n";
+            var ex4 = SightReduction(+45, -45, +10, 330);
+            text += ex4.Hc.ToString() + " = " + DMSformat.DMm(ex4.Hc) + "\r\n";
+            text += ex4.Zn.ToString() + " = " + DMSformat.DMm(ex4.Zn) + "\r\n";
 
             return text;
         }
-
     }
 }

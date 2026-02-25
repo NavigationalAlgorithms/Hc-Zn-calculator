@@ -17,11 +17,8 @@ https://sites.google.com/site/navigationalalgorithms/</Description>
     <Compile Include="..\Navigational Algorithms\Ageton.cs" Link="Navigational Algorithms\Ageton.cs" />
     <Compile Include="..\Navigational Algorithms\Hc Zn.cs" Link="Navigational Algorithms\Hc Zn.cs" />
     <Compile Include="..\Navigational Algorithms\Sexagesimal.cs" Link="Navigational Algorithms\Sexagesimal.cs" />
+    <Compile Include="..\Navigational Algorithms\Sexagesimal.Format.cs" Link="Navigational Algorithms\Sexagesimal.Format.cs" />
     <Compile Include="..\Navigational Algorithms\Ultra Compact Haversine Sight Reduction.cs" Link="Navigational Algorithms\Ultra Compact Haversine Sight Reduction.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Navigational Algorithms\" />
   </ItemGroup>
 
 </Project>

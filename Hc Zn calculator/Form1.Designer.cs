@@ -49,10 +49,10 @@
             calculate_button.Margin = new Padding(4, 3, 4, 3);
             calculate_button.Name = "calculate_button";
             calculate_button.Size = new Size(318, 43);
-            calculate_button.TabIndex = 0;
+            calculate_button.TabIndex = 8;
             calculate_button.Text = "Calculate";
             calculate_button.UseVisualStyleBackColor = true;
-            calculate_button.Click += calculate_button_Click;
+            calculate_button.Click += Calculate_button_Click;
             // 
             // label1
             // 
@@ -62,7 +62,7 @@
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(104, 15);
-            label1.TabIndex = 3;
+            label1.TabIndex = 0;
             label1.Text = "B - Latitude +N/-S";
             // 
             // B_textBox
@@ -73,7 +73,7 @@
             B_textBox.Margin = new Padding(4, 3, 4, 3);
             B_textBox.Name = "B_textBox";
             B_textBox.Size = new Size(318, 23);
-            B_textBox.TabIndex = 4;
+            B_textBox.TabIndex = 1;
             B_textBox.Text = "43.31666667";
             // 
             // L_textBox
@@ -84,7 +84,7 @@
             L_textBox.Margin = new Padding(4, 3, 4, 3);
             L_textBox.Name = "L_textBox";
             L_textBox.Size = new Size(319, 23);
-            L_textBox.TabIndex = 5;
+            L_textBox.TabIndex = 3;
             L_textBox.Text = "-2.0";
             // 
             // label2
@@ -95,7 +95,7 @@
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(116, 15);
-            label2.TabIndex = 6;
+            label2.TabIndex = 2;
             label2.Text = "L - Longitude +E/-W";
             // 
             // label3
@@ -106,7 +106,7 @@
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(134, 15);
-            label3.TabIndex = 7;
+            label3.TabIndex = 4;
             label3.Text = "Dec - Declination +N/-S";
             // 
             // Dec_textBox
@@ -117,7 +117,7 @@
             Dec_textBox.Margin = new Padding(4, 3, 4, 3);
             Dec_textBox.Name = "Dec_textBox";
             Dec_textBox.Size = new Size(318, 23);
-            Dec_textBox.TabIndex = 8;
+            Dec_textBox.TabIndex = 5;
             Dec_textBox.Text = "8.211666667";
             // 
             // label4
@@ -128,7 +128,7 @@
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(159, 15);
-            label4.TabIndex = 9;
+            label4.TabIndex = 6;
             label4.Text = "GHA - Greenwich hour angle";
             // 
             // GHA_textBox
@@ -139,7 +139,7 @@
             GHA_textBox.Margin = new Padding(4, 3, 4, 3);
             GHA_textBox.Name = "GHA_textBox";
             GHA_textBox.Size = new Size(319, 23);
-            GHA_textBox.TabIndex = 10;
+            GHA_textBox.TabIndex = 7;
             GHA_textBox.Text = "347.9733333";
             // 
             // output_textBox
@@ -152,7 +152,7 @@
             output_textBox.Name = "output_textBox";
             output_textBox.ScrollBars = ScrollBars.Vertical;
             output_textBox.Size = new Size(319, 303);
-            output_textBox.TabIndex = 11;
+            output_textBox.TabIndex = 9;
             output_textBox.Text = "LHA - Local hour angle\r\nHc - Altitude (calculated)\r\nZn - Azimut\r\n\r\nhttps://en.wikipedia.org/wiki/Sight_reduction\r\n\r\nNavigational Algorithms\r\nhttp://sites.google.com/site/navigationalalgorithms/";
             // 
             // Table_hv_button
@@ -163,7 +163,7 @@
             Table_hv_button.Margin = new Padding(4, 3, 4, 3);
             Table_hv_button.Name = "Table_hv_button";
             Table_hv_button.Size = new Size(318, 43);
-            Table_hv_button.TabIndex = 12;
+            Table_hv_button.TabIndex = 10;
             Table_hv_button.Text = "Table: Haversine, Ageton";
             Table_hv_button.UseVisualStyleBackColor = true;
             Table_hv_button.Visible = false;
@@ -187,6 +187,7 @@
             Controls.Add(calculate_button);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Hc Zn calculator";
             ResumeLayout(false);
             PerformLayout();
