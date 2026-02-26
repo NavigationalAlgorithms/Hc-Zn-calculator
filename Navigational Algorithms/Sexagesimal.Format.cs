@@ -1,11 +1,11 @@
 /*
-	File: Sexagesimal.cs
+	File: Sexagesimal.Format.cs
 	
 	This file contains proprietary information of Andrés Ruiz Gonzalez
 	Copying or reproduction without prior written approval is prohibited.
 	Andrés Ruiz. San Sebastian - Donostia. Gipuzkoa
 	Navigational Algorithms
-	Copyright (c) 1998	
+	Copyright (c) 2026	
 */
 
 using System;
@@ -15,6 +15,8 @@ namespace NavigationalAlgorithms
 {
     public static class DMSformat
     {
+        private static readonly CultureInfo Inv = CultureInfo.InvariantCulture;
+
         #region TMP
 
         public static string FormatearGradosMinutos(double ang)
@@ -137,8 +139,6 @@ namespace NavigationalAlgorithms
         }
 
         #endregion
-
-        private static readonly CultureInfo Inv = CultureInfo.InvariantCulture;
 
         /// <summary>
         /// Formatea grados decimales a "DDº MM.M'".

@@ -11,6 +11,7 @@ Navigational Algorithms
 https://sites.google.com/site/navigationalalgorithms/</Description>
     <Copyright>Copyright ©Navigational Algorithms 2015</Copyright>
     <PackageProjectUrl>https://sites.google.com/site/navigationalalgorithms/</PackageProjectUrl>
+    <AssemblyName>Hc Zn calculator</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
